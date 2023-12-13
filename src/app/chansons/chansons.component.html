@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Date Création</th>
+                        <th>Nom</th>
+                        <th>Artiste</th> 
+                        <th>Image</th>
+                        <th>Supprimer</th>
+                        <th>Editer</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let chanson of chansons">
+                    <tr>
+                        <td>{{chanson.idChanson}}</td>
+                        <td>{{chanson.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{chanson.nom}}</td>
+                        <td>{{chanson.artiste?.nomArtiste}}</td>
+
+                        <td><img class="card-img-top img-responsive"
+                            src = "{{chanson.imageStr}}"
+
+                            style = "height :50px;width:100px">
+                            </td>
+                            
+                        <td>
+                            <a *ngIf="authService.isAdmin()"
+                            class="btn btn-danger" (click)="supprimerChanson(chanson)">Supprimer</a>
+                        </td>
+                        <td>
+                            <a *ngIf="authService.isAdmin()"
+                            class="btn btn-success" [routerLink]="['/updateChanson', chanson.idChanson]">Modifier</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

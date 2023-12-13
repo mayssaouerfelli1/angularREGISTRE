@@ -1,0 +1,47 @@
+<div class="container">
+    <div>
+        <h2>Ajouter une Chanson :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Chanson</label>
+            <input type="text" [(ngModel)]="newChanson.idChanson" name="idChanson" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom de la Chanson</label>
+            <input type="text" [(ngModel)]="newChanson.nom" name="nom" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date de création</label>
+            <input type="date" [(ngModel)]="newChanson.dateCreation" name="dateCreation" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Artiste</label>
+            <select class="form-control form-control-lg" id="idArtiste" name="idArtiste" [(ngModel)]="newIdArtiste">
+                <option value="">Sélectionner un artiste</option>
+                <option *ngFor="let art of artistes" [value]="art.idArtiste">
+                    {{art.nomArtiste}}
+                </option>
+            </select>
+        </div>
+
+
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <label class="mb-2">Image :</label>
+            <input type="file" (change)="onImageUpload($event)"
+            name="logo" class="form-control">
+            </div>
+
+            <div class="col-sm-16 col-md-16 col-lg-16">
+                <img [src]="imagePath" class="card-img-top img-fluid rounded-start"
+                style="width: 500px; height: 300px" />
+                </div>
+
+
+        <div class="mt-2">
+            <button type="button" (click)="addChanson()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>

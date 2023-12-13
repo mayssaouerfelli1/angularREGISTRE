@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Artistes</label>
+        <select class="form-control form-control-lg" id="idArtiste" name="idArtiste" [(ngModel)]="IdArtiste" (change)="onChange()">
+            <option *ngFor="let art of artistes" value="{{art.idArtiste}}">
+                {{art.nomArtiste}}
+            </option>
+        </select>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Date Création</th>
+                        <th>Artiste</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let chanson of chansons">
+                    <tr>
+                        <td>{{chanson.idChanson}}</td>
+                        <td>{{chanson.nom}}</td>
+                        <td>{{chanson.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{chanson.artiste.nomArtiste}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

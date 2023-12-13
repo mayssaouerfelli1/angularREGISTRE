@@ -1,0 +1,31 @@
+<div class="container">
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2">
+            <label>Nom Chanson en tapant</label>
+            <input #nom (input)="onKeyUp(nom.value)" class="form-control">
+        </div>
+    </form>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Date Création</th>
+                        <th>Artiste</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let chanson of chansons">
+                        <td>{{chanson.idChanson}}</td>
+                        <td>{{chanson.nom}}</td>
+                        <td>{{chanson.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{chanson.artiste?.nomArtiste}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
